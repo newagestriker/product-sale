@@ -1,0 +1,12 @@
+.title{
+    background-color: $color-primary-dark;
+    font-size: xx-large;
+    text-align: center;
+    color: $color-primary-light;
+    padding: 1rem;
+    text-transform: uppercase;
+
+    &--city{
+        font-size: large;
+    }
+}

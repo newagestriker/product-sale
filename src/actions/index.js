@@ -18,12 +18,10 @@ export const receiveProductsPerCity = (city, product) => {
     payload: { city, product },
   };
 };
-export const getUniqueProducts = (product) => {
-  return {
-    type: GET_UNIQUE_PRODUCTS,
-    payload: product,
-  };
-};
+export const getUniqueProducts = (product) => ({
+  type: GET_UNIQUE_PRODUCTS,
+  payload: product,
+});
 export const incrementCityVisited = () => {
   return {
     type: INCREMENT_CITIES_VISITED,

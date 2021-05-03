@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import Rows from "../Components/Rows";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { incrementProductVisited } from "../actions";
 
+// Using redux hooks
 const Product = (props) => {
+  const dispatch = useDispatch();
+
+  const productPerCity = useSelector((state) => state.productPerCity);
   useEffect(() => {
-    props.incrementProductVisited();
+    dispatch(incrementProductVisited());
   }, []);
   const getCityRows = () => {
     const matchingCities = [];
-    for (let city in props.productPerCity) {
-      props.productPerCity[city].forEach((element, index) => {
+    for (let city in productPerCity) {
+      productPerCity[city].forEach((element, index) => {
         const key = Object.keys(element)[0];
         if (key === props.productName) {
           matchingCities.push(
@@ -38,8 +41,4 @@ const Product = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => {
-  return { productPerCity: state.productPerCity };
-};
-
-export default connect(mapStateToProps, { incrementProductVisited })(Product);
+export default Product;
